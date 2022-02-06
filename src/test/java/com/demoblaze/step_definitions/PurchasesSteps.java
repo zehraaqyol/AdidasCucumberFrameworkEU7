@@ -3,13 +3,13 @@ package com.demoblaze.step_definitions;
 import com.demoblaze.pages.ProductPage;
 import com.demoblaze.utilities.ConfigurationReader;
 import com.demoblaze.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
 import java.io.ObjectInputFilter;
 
 public class PurchasesSteps {
-
 
     ProductPage productPage = new ProductPage();
 
@@ -23,5 +23,19 @@ public class PurchasesSteps {
         productPage.addToCart();
         productPage.home.click();
     }
+
+
+    @And("User navigates to cart and removes {string}")
+    public void userNavigatesToCartAndRemoves(String product) {
+        productPage.cart.click();
+        productPage.deleteProduct(product);
+
     }
+
+    @And("User clicks on place order")
+    public void userClicksOnPlaceOrder() {
+        productPage.cart.click();
+        productPage.placeOrder.click();
+    }
+}
 

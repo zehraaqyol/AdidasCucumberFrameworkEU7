@@ -1,5 +1,10 @@
 package com.demoblaze.utilities;
 
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class BrowserUtils {
 
     public static void sleep(int second) {
@@ -15,6 +20,14 @@ public class BrowserUtils {
             System.out.println("something happened in the sleep method");
 
         }
+    }
+    public static List<String> getElementsText(List<WebElement> list){
+        List<String> elemTexts = new ArrayList<>();
+        for (WebElement webElement : list) {
+            elemTexts.add(webElement.getText());
+        }
+        return elemTexts;
+
     }
 
 

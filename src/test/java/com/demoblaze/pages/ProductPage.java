@@ -32,16 +32,20 @@ public class ProductPage extends BasePage{
 
     public void addToCart(){
         addToCartElement.click();
-        BrowserUtils.sleep(2);
-        //  WebDriverWait wait = new WebDriverWait(Driver.get(),10);
-        Alert alert = Driver.get().switchTo().alert();
+        // BrowserUtils.sleep(2);
+        WebDriverWait wait = new WebDriverWait(Driver.get(),10);
+        wait.until(ExpectedConditions.alertIsPresent());
 
-        //  wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = Driver.get().switchTo().alert();
         alert.accept();
     }
-
     @FindBy(xpath = "//button[.='Place Order']")
     public WebElement placeOrder;
+
+    @FindBy(id = "totalp")
+    public WebElement totalPrice;
+
+
 
 
 
